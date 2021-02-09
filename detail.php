@@ -4,7 +4,7 @@
 require __DIR__ .  '/vendor/autoload.php';
 // Agrega credenciales
 MercadoPago\SDK::setAccessToken("TEST-3401937872846723-042304-711a6a3244dd37c665b344001d9b9f3f-81228673");
-
+MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 
 
 // Obtengo datos del request
@@ -20,9 +20,9 @@ $product = [
 
 //Back urls
 $back_urls = [
-    'success' => 'mp.local',
-    'pending' => 'mp.local',
-    'failure' => 'mp.local',
+    'success' => 'mercadopago.miapp.store',
+    'pending' => 'mercadopago.miapp.store',
+    'failure' => 'mercadopago.miapp.store',
 ];
 
 
@@ -72,9 +72,7 @@ $payer->address = [
     'zip_code' => '1111',
 ];
 
-$headers = [
-    'x-integrator-id' => 'dev_24c65fb163bf11ea96500242ac130004'
-];
+
 
 $preference->items = array($item);
 $preference->payer = $payer;
@@ -84,8 +82,7 @@ $preference->payment_methods->excluded_payment_types= array($excluded_payment_ty
 $preference->back_urls = $back_urls;
 $preference->auto_return = 'all';
 $preference->external_reference = 'franco_vives@hotmail.com';
-$preference->headers=$headers;
-
+$preference->notification_url ='hmercadopago.miapp.store/webhook.php';
 $preference->save();
 
 
