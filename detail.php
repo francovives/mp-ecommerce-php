@@ -72,7 +72,9 @@ $payer->address = [
     'zip_code' => '1111',
 ];
 
-
+$headers = [
+    'x-integrator-id' => 'dev_24c65fb163bf11ea96500242ac130004'
+];
 
 $preference->items = array($item);
 $preference->payer = $payer;
@@ -82,7 +84,7 @@ $preference->payment_methods->excluded_payment_types= array($excluded_payment_ty
 $preference->back_urls = $back_urls;
 $preference->auto_return = 'all';
 $preference->external_reference = 'franco_vives@hotmail.com';
-$preference->notification_url ='hmercadopago.miapp.store/webhook.php';
+$preference->notification_url ='https://mercadopago.miapp.store/webhook.php';
 $preference->save();
 
 
@@ -631,7 +633,7 @@ $preference->save();
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <a href="<?php echo $preference->sandbox_init_point; ?>" class="btn btn-primary btn-block">Pagar Ahora!</a>
+                                    <a href="<?php echo $preference->init_point; ?>" class="btn btn-primary btn-block">Pagar Ahora!</a>
                                   
                                 </div>
                             </div>
