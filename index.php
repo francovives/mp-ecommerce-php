@@ -470,6 +470,11 @@
             background-color: yellow;
             color: black;
         }
+	       .message_info {
+            min-height: 150px;
+            background-color: gray;
+            color: black;
+        }
     </style>
 </head>
 
@@ -528,6 +533,10 @@ switch ($_GET['collection_status']) {
 
 ?>
 
+<div class="message_info">
+<h4>franco vives mail:franco_vives@hotmail.com</h4>
+<h5>codigo fuente github: <a href="https://github.com/francovives/mp-ecommerce-php">https://github.com/francovives/mp-ecommerce-php</a></h5>
+</div>
 
 <body class="as-theme-light-heroimage">
 
