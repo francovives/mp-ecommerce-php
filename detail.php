@@ -3,7 +3,7 @@
 <?php
 require __DIR__ .  '/vendor/autoload.php';
 // Agrega credenciales
-MercadoPago\SDK::setAccessToken("TEST-3401937872846723-042304-711a6a3244dd37c665b344001d9b9f3f-81228673");
+MercadoPago\SDK::setAccessToken("APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398");
 MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 
 
@@ -33,6 +33,8 @@ $preference = new MercadoPago\Preference();
 // Creo objeto de metodos de pagos
 $payment_methods = new MercadoPago\PaymentMethod();
 
+
+
 $payment_methods->installments = 6;
 
 $excluded_payment_methods = [
@@ -58,9 +60,10 @@ $item->description = $product['description'];
 //Creo un objeto de pagador
 $payer = new MercadoPago\Payer();
 
+
 $payer->name = 'lalo';
 $payer->surname = 'landa';
-$payer->email = 'franco_lakd@gmail.com';
+
 $payer->phone = [
     'area_code' => '11',
     'numbre' => '222233333',
@@ -72,20 +75,21 @@ $payer->address = [
     'zip_code' => '1111',
 ];
 
-$headers = [
-    'x-integrator-id' => 'dev_24c65fb163bf11ea96500242ac130004'
-];
-
 $preference->items = array($item);
 $preference->payer = $payer;
 $preference->payment_methods = $payment_methods;
 $preference->payment_methods->excluded_payment_methods = array($excluded_payment_methods);
 $preference->payment_methods->excluded_payment_types= array($excluded_payment_types);
 $preference->back_urls = $back_urls;
-$preference->auto_return = 'all';
+$preference->auto_return = 'approved';
 $preference->external_reference = 'franco_vives@hotmail.com';
+
+
 $preference->notification_url ='https://mercadopago.miapp.store/webhook.php';
+
+
 $preference->save();
+
 
 
 
@@ -94,6 +98,8 @@ $preference->save();
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
 
     <meta name="viewport" content="width=1024">
     <title>Tienda e-commerce</title>
