@@ -5,7 +5,7 @@
     $json = file_get_contents('php://input');
 
     // decode json
-    $object = json_encode($json);
+    $object = json_decode($json);
 
     file_put_contents('miregistro.log', print_r($object, true).PHP_EOL, FILE_APPEND);
 
