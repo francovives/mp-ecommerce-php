@@ -4,6 +4,7 @@
 require __DIR__ .  '/vendor/autoload.php';
 // Agrega credenciales
 MercadoPago\SDK::setAccessToken("APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398");
+
 MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 
 
@@ -56,6 +57,7 @@ $item->title = $product['title'];
 $item->quantity = $product['unit'];
 $item->unit_price = $product['price'];
 $item->description = $product['description'];
+$item->picture_url = $product['image'];
 
 //Creo un objeto de pagador
 $payer = new MercadoPago\Payer();
@@ -633,10 +635,10 @@ $preference->save();
                                             </h3>
                                         </div>
                                         <h3>
-                                            <?php echo $_POST['price'] ?>
+                                            <?php echo "Precio: $".$_POST['price'] ?>
                                         </h3>
                                         <h3>
-                                            <?php echo "$" . $_POST['unit'] ?>
+                                            <?php echo "Cantidad: " . $_POST['unit'] ?>
                                         </h3>
                                     </div>
                                     <a href="<?php echo $preference->init_point; ?>" class="btn btn-primary btn-block">Pagar Ahora!</a>
